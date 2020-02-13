@@ -1,0 +1,34 @@
+<html>
+  <head>
+    <!-- Load the latest version of TensorFlow.js -->
+    <script src="https://unpkg.com/@tensorflow/tfjs"></script>
+    <script src="https://unpkg.com/@tensorflow-models/mobilenet"></script>
+    <script src="https://unpkg.com/@tensorflow-models/knn-classifier"></script>
+	
+	
+	
+	
+	<link rel="stylesheet" type="text/css" href="index.css">
+  </head>
+  <body>
+
+    <video autoplay playsinline muted id="webcam" width="100%" height="300px"></video>
+
+    
+	<div class="tab">
+	  <button> Add Data : </button>
+	  <button id="class-a" class="Class a">Add Book</button>
+	  <button id="class-b" class="Class b">Add Bottle</button>
+	  <button id="class-c" class="Class c">Add Human</button>
+	  <button id="class-d" class="Class d">Add Scissor</button>
+	</div>
+	
+	
+	<div class="tab">
+	    <button id="console"></button>
+	</div>
+	<!-- Load index.js after the content of the page -->
+    <script src="index.js"></script>
+  </body>
+</html>
+
