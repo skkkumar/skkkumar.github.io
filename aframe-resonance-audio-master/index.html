@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Experience Live Music</title>
+    <meta name="description" content="Experience Live Music">
+    <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/resonance-audio/build/resonance-audio.min.js"></script>
+
+    <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v4.1.2/dist/aframe-extras.min.js"></script>
+    <script src="https://rawgit.com/ngokevin/kframe/master/components/animation/dist/aframe-animation-component.min.js"></script>
+    <script src="https://rawgit.com/oscarmarinmiro/aframe-stereo-component/master/dist/aframe-stereo-component.min.js"></script>
+    <script src="https://cdn.rawgit.com/noahneumark/aframe-resonance-audio/fe37437/components/noah-ra-room.min.js"></script>
+    <script src="https://cdn.rawgit.com/noahneumark/aframe-resonance-audio/fe37437/components/noah-ra-src.min.js"></script>
+    <script src="https://cdn.rawgit.com/noahneumark/aframe-resonance-audio/fe37437/components/noah-ra-beatsync.min.js"></script>
+
+
+  </head>
+  <body>
+
+    <a-scene>
+      <a-assets>
+        <img id='skyL' src='assets/img/craterL.jpg'>
+        <img id='skyR' src='assets/img/craterR.jpg'>
+        <audio id="song" src="assets/audio/audio.wav"></audio>
+        <video id="fire" autoplay loop="true" src="assets/img/fire.mp4"> </video>
+        <a-asset-item id="speaker" src="models/speaker/scene.gltf"></a-asset-item>
+        <a-asset-item id="shack" src="models/shack/scene.gltf"></a-asset-item>
+      </a-assets>
+
+      <a-resonance-audio-room position="0 2.5 0" id="room" width="10" height="5" depth="8" ambisonic-order="1"
+        speed-of-sound="300" left="transparent" right="transparent"
+        front="transparent" back="transparent" down="grass" up="transparent" material="opacity:0">
+        <a-entity
+          id="songFL"
+          beat-sync__rotateL="target:#songFL; event:rotateL; frequency: 2; src: beats.json; debug: true"
+          
+          beat-sync__spotlightL1="target:#spotlightL; event:spotlight; frequency: .5; pattern: 0, 0, 1, 1; start: 16; end: 18"
+          beat-sync__spotlightR1="target:#spotlightR; event:spotlight; frequency: .5; pattern: 1, 1, 0, 0, 1, 0, 0, 0; start: 16; end: 19"
+
+          beat-sync__spotlightL2="target:#spotlightL; event:fadeslow; pattern: 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0; start: 64; end: 192"
+          beat-sync__spotlightC2="target:#spotlightC; event:fadeslow; pattern: 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0; start: 64; end: 192"
+          beat-sync__spotlightR2="target:#spotlightR; event:fadeslow; pattern: 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1; start: 64; end: 192"
+
+          beat-sync__ambient="target:#ambient; event:fadein; frequency: 4"
+          beat-sync__skyL1="target:#skyLeft; event:fadeout; frequency: .25; start: 32; end: 40"
+          beat-sync__skyR1="target:#skyRight; event:fadeout; frequency: .25; start: 32; end: 40"
+          beat-sync__skyL2="target:#skyLeft; event:rotate; frequency: 24; start: 40; end: 41"
+          beat-sync__skyR2="target:#skyRight; event:rotate; frequency: 24; start: 40; end: 41"
+
+          beat-sync__firebox1="target:#firebox; event:fadein; start: 98; end: 99"
+          beat-sync__firebox2="target:#firebox; event:fadein; frequency: 4; start: 100; end: 159"
+          beat-sync__firebox3="target:#firebox; event:close; start: 160; end: 161"
+
+          animation__rot="property: rotation; dur: 60; from: 0 45 0; to: 0 35 0; startEvents: rotateL"
+          gltf-model="#speaker" scale="0.09 0.09 0.09"
+          resonance-audio-src="src:#song; channel:left; alpha:0.5; sharpness: 2; gain: 2; maxDistance: 40;"
+          position="-2.5 -1.5 -2.5" rotation="0 45 0"></a-entity>
+        <!--<a-entity
+        id="songFR"
+        gltf-model="#speaker" scale="0.09 0.09 0.09"
+        animation__rot="property: rotation; dur: 90; from: 0 -45 0; to: 0 -35 0; startEvents: rotateR"
+        resonance-audio-src="src:#song; channel:right; alpha:0.5; sharpness: 2; gain: 2; maxDistance: 40;"
+        position="2.5 -1.5 -2.5" rotation="0 -45 0"></a-entity>-->
+      </a-resonance-audio-room>
+
+      <a-entity gltf-model="#shack" scale="0.015 0.015 0.015" position="-7.7 0 -5" rotation="0 90 0"></a-entity>
+
+
+      <a-sky id="skyLeft" src="#skyL" stereo="eye:left" geometry="thetaLength:70; thetaStart:40;"
+      animation__blink1="property: color; dur: 90; loop: 1; dir: alternate; from: #ffffff; to: #000000; startEvents: fadeout"
+      animation__rot="property: rotation; dur: 13500; easing: easeInOutSine; from: 0 0 0; to: 0 360 0; startEvents: rotate"
+      ></a-sky>
+      <a-sky id="skyRight" src="#skyR" stereo="eye:right" geometry="thetaLength:70; thetaStart:40;"
+      animation__blink1="property: color; dur: 90; loop: 1; dir: alternate; from: #ffffff; to: #000000; startEvents: fadeout"
+      animation__rot="property: rotation; dur: 13500; easing: easeInOutSine; from: 0 0 0;  to: 0 360 0; startEvents: rotate"
+      ></a-sky>
+
+
+      <a-entity id="spotlightL" light="type: spot; angle: 30; intensity: 0; penumbra: .2; color: #fced22;"
+        position="-3 5 0" rotation="-56 13 0"
+        animation="property:light.intensity; easing:easeInExpo; dur:60; from:2.2; to: 0; startEvents: spotlight;"
+        animation__slow="property:light.intensity; easing:easeInExpo; dur:400; from:2.2; to: 0; startEvents: fadeslow;">
+      </a-entity>
+
+      <a-entity id="spotlightR" light="type: spot; angle: 30; intensity: 0; penumbra: .2; color: #fc2222;"
+        position="3 5 0" rotation="-56 -13 0"
+        animation="property:light.intensity; easing:easeInExpo; dur:60; from:2.2; to: 0; startEvents: spotlight;"
+        animation__slow="property:light.intensity; easing:easeInExpo; dur:400; from:2.2; to: 0; startEvents: fadeslow;">
+      </a-entity>
+
+      <a-entity id="spotlightC" light="type: spot; angle: 40; intensity: 0; penumbra: .2; color: #22fc52;"
+        position="0 5 0" rotation="-56 0 0"
+        animation__slow="property:light.intensity; easing:easeInExpo; dur:400; from:2.2; to: 0; startEvents: fadeslow;">
+      </a-entity>
+
+      <a-light id="ambient" color="#c9cbff" type="ambient" intensity=".7"
+      animation="property:color; easing:linear; dur:1800; from:#0026ff; to: #c9cbff; startEvents: fadein;"></a-light>
+      </a-light>
+
+      <a-entity id="firebox" position="0 2.5 -0.5" geometry="primitive: box; width: 14.7; depth: 8.27; height: 4.23" material="opacity: 0; src: #fire; side: back;"
+      animation__fade="property:material.opacity; easing:linear; dur:3000; from:0; to: .7; startEvents: fadein;"
+      animation__close="property:material.opacity; easing:linear; dur:50; from:.7; to: 0; startEvents: close;">
+      </a-entity>
+
+
+      <a-entity id="rig"
+          movement-controls="speed: .3;"
+          position="0 0 0">
+
+        <a-entity camera
+          position="0 2.2 2"
+          stereocam="eye:left;"
+          look-controls="pointerLockEnabled: true">
+        </a-entity>
+      </a-entity>
+
+    </a-scene>
+  </body>
+
+  <script>
+    window.addEventListener('touchstart', ()=>{
+      document.querySelector('#fire').play()
+    })
+    window.addEventListener('keypress', ()=>{
+      document.querySelector('#fire').play()
+    })
+  </script>
+
+</html>
