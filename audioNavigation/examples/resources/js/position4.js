@@ -178,8 +178,8 @@ let onLoad = function() {
     },
     {
       icon: 'listenerIcon',
-      x: 0.25,
-      y: 0.25,
+      x: 0.5,
+      y: 0.5,
       radius: 0.04,
       alpha: 0.333,
       clickable: true,
