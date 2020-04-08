@@ -1,0 +1,80 @@
+<!--
+  Copyright 2017 Google Inc. All Rights Reserved.
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" href="resources/examples.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+    <title>Sound training</title>
+  </head>
+  <body>
+    
+
+    <div class="container mt-5">
+      <div class="row justify-content-center">
+        <div class="col-lg-5 mb-4" id="content">
+          
+          <p id="instructions" style="display:none">
+            Press drag your finger in circles <img src="resources/volume-high.svg" class="icon" alt="source" id="sourceIcon2"> 
+		    <img src="resources/person.svg" class="icon" alt="listener" id="listenerIcon2">
+			in clockwise or anti-clockwise direction. 
+			When you move, the sound source will move accordingly.
+			Try to learn the direction of sound and the sound produced.
+			Practice till you are comfortable. 
+			
+          </p>
+		  <!--Till you don't press space, these instructions will be repeated.-->
+
+        </div>  
+
+        <div class="col-lg-5 text-center">
+          <div style="width:100%">
+            <canvas id="canvas"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+	
+
+    <script src="../build/resonance-audio.min.js"></script>
+    <script src="resources/js/canvas-control5.js"></script>
+    <script src="resources/js/position5.js"></script>
+	<script src="resources/js/textSpeech.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+	<script>
+		
+		$(document).ready(function() {
+		
+			var instructionsText = $("#instructions").text();
+			speakText(instructionsText, playMusic);
+			//play the instruction audio
+			
+			
+			//start the audio
+			//$("#sourceButton").trigger("click");
+		});
+	</script>
+  
+  
+  </body>
+</html>
