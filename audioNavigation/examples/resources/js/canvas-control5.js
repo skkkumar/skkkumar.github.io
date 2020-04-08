@@ -31,10 +31,22 @@ function CanvasControl(canvas, elements, callbackFunc) {
   that = this;
   canvas.addEventListener('touchstart', function(event) {
     that._cursorDownFunc(event);
+	//start music if not started
+	if(notStarted){
+		playMusic();
+		
+		notStarted = false;
+	}
   });
 
   canvas.addEventListener('mousedown', function(event) {
     that._cursorDownFunc(event);
+	//start music if not started
+	if(notStarted){
+		playMusic();
+		
+		notStarted = false;
+	}
   });
 
   canvas.addEventListener('touchmove', function(event) {
@@ -46,12 +58,7 @@ function CanvasControl(canvas, elements, callbackFunc) {
       }
     }
 	
-	//start music if not started
-	if(notStarted){
-		playMusic();
-		
-		notStarted = false;
-	}
+	
 	
   }, true);
 
@@ -65,6 +72,7 @@ function CanvasControl(canvas, elements, callbackFunc) {
 
   document.addEventListener('touchend', function(event) {
     that._cursorUpFunc(event);
+	
   });
 
   document.addEventListener('mouseup', function(event) {
@@ -186,6 +194,11 @@ CanvasControl.prototype.resize = function() {
 };
 
 CanvasControl.prototype.draw = function() {
+	
+	
+	
+	
+	
   this._context.globalAlpha = 1;
   this._context.clearRect(0, 0, this._canvas.width, this._canvas.height);
 
