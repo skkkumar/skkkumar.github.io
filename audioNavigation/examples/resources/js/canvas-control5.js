@@ -10,6 +10,7 @@ var that;
 var timingAnnounced = true;
 var startTime;
 var stopTime;
+var notStarted = true;
 
 function CanvasControl(canvas, elements, callbackFunc) {
   this._canvas = canvas;
@@ -44,6 +45,14 @@ function CanvasControl(canvas, elements, callbackFunc) {
         event.preventDefault();
       }
     }
+	
+	//start music if not started
+	if(notStarted){
+		playMusic();
+		
+		notStarted = false;
+	}
+	
   }, true);
 
   canvas.addEventListener('mousemove', function(event) {
