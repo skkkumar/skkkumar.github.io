@@ -1,0 +1,174 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+/* The navigation menu */
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+}
+
+/* Navigation links */
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* The subnavigation menu */
+.subnav {
+  float: left;
+  overflow: hidden;
+}
+
+/* Subnav button */
+.subnav .subnavbtn {
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+/* Add a red background color to navigation links on hover */
+.navbar a:hover, .subnav:hover .subnavbtn {
+  background-color: red;
+}
+
+/* Style the subnav content - positioned absolute */
+.subnav-content {
+  display: none;
+  position: absolute;
+  left: 0;
+  background-color: red;
+  width: 100%;
+  z-index: 1;
+}
+
+/* Style the subnav links */
+.subnav-content a {
+  float: left;
+  color: white;
+  text-decoration: none;
+}
+
+/* Add a grey background color on hover */
+.subnav-content a:hover {
+  background-color: #eee;
+  color: black;
+}
+
+/* When you move the mouse over the subnav container, open the subnav content */
+.subnav:hover .subnav-content {
+  display: block;
+}
+
+.stop-scrolling {
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Style the active class (and buttons on mouse-over) */
+.active{
+  background-color: #4CAF50;
+  color: white;
+}
+
+</style>
+<script type="text/javascript">
+    //https://explorable.com/counterbalanced-measures-design
+    var conditions = [1, 2, 3, 4, 5];
+
+    function dumpData(){
+        //find out the time the user pressed
+        
+    }
+    
+    function stopScrolling(){
+        document.getElementById("body").classList.add('stop-scrolling');
+    }
+    
+    
+    
+    
+</script>
+</head>
+<body id="body" onload="stopScrolling()">
+<!-- The navigation menu -->
+<div class="navbar">
+  <a href="#demo21">Condition 1</a>
+  <a href="#demo22">Condition 2</a>
+  <a href="#demo23">Condition 3</a>
+  <a href="#demo24">Condition 4</a>
+  <a href="#demo25">Condition 5</a>
+</div>
+<p>
+Click on first condition. After completing it go to the next one.
+</p>
+
+<iframe src="demo2.html" title="demo2" style="height:1000px;width:1200px;">
+</iframe>
+
+<a name="demo21"></a>
+<div class="navbar">
+  <a href="#demo21" class="active">Condition 1</a>
+  <a href="#demo22">Condition 2</a>
+  <a href="#demo23">Condition 3</a>
+  <a href="#demo24">Condition 4</a>
+  <a href="#demo25">Condition 5</a>
+</div>
+<iframe src="demo21.html" title="demo21" style="height:1000px;width:1200px;">
+    </iframe>
+
+<a name="demo22"></a>
+<div class="navbar">
+  <a href="#demo21">Condition 1</a>
+  <a href="#demo22" class="active">Condition 2</a>
+  <a href="#demo23">Condition 3</a>
+  <a href="#demo24">Condition 4</a>
+  <a href="#demo25">Condition 5</a>
+</div>
+<iframe src="demo25.html" title="demo25" style="height:1000px;width:1200px;">
+</iframe>
+<a name="demo23"></a>
+<div class="navbar">
+  <a href="#demo21">Condition 1</a>
+  <a href="#demo22">Condition 2</a>
+  <a href="#demo23" class="active">Condition 3</a>
+  <a href="#demo24">Condition 4</a>
+  <a href="#demo25">Condition 5</a>
+</div>
+<iframe src="demo22.html" title="demo22" style="height:1000px;width:1200px;">
+</iframe>
+<a name="demo24"></a>
+<div class="navbar">
+  <a href="#demo21">Condition 1</a>
+  <a href="#demo22">Condition 2</a>
+  <a href="#demo23">Condition 3</a>
+  <a href="#demo24" class="active">Condition 4</a>
+  <a href="#demo25">Condition 5</a>
+</div>
+<iframe src="demo24.html" title="demo24" style="height:1000px;width:1200px;">
+</iframe>
+<a name="demo25"></a>
+<div class="navbar">
+  <a href="#demo21">Condition 1</a>
+  <a href="#demo22">Condition 2</a>
+  <a href="#demo23">Condition 3</a>
+  <a href="#demo24">Condition 4</a>
+  <a href="#demo25" class="active">Condition 5</a>
+</div>
+<iframe src="demo23.html" title="demo23" style="height:1000px;width:1200px;">
+</iframe>
+<!--
+<button onclick="dumpData()">
+</button>
+-->
+</body>
+</html>

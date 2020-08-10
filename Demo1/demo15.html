@@ -1,0 +1,261 @@
+<html>
+<head>
+    <script type="text/javascript">
+        var started = false;
+        var startTime;
+        
+        function beep() {
+            audioCtx = new(window.AudioContext || window.webkitAudioContext)();
+
+            var frequency = 200;
+            var waveType = 'square';// 'square'
+            var volume = 1;
+  
+            var duration = 200;
+            var oscillator = audioCtx.createOscillator();
+            var gainNode = audioCtx.createGain();
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(audioCtx.destination);
+            
+            gainNode.gain.value = volume;
+            oscillator.frequency.value = frequency;
+            oscillator.type = waveType;
+            
+            oscillator.start();
+            
+            setTimeout(
+              function() {
+                oscillator.stop();
+              },
+              duration
+            );
+            
+            started = true;
+            
+            var d = new Date();
+            startTime = d.getTime();
+        }
+            
+            
+            
+        function hover() {
+            if(started){
+        
+                console.log("hover");
+                audioCtx = new(window.AudioContext || window.webkitAudioContext)();
+    
+                var frequency = 200;
+                var waveType = 'square';// 'square'
+                var volume = 1;
+      
+                var duration = 200;
+                var oscillator = audioCtx.createOscillator();
+                var gainNode = audioCtx.createGain();
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(audioCtx.destination);
+                
+                gainNode.gain.value = volume;
+                oscillator.frequency.value = frequency;
+                oscillator.type = waveType;
+                
+                oscillator.start();
+                
+                setTimeout(
+                  function() {
+                    oscillator.stop();
+                  },
+                  duration
+                );
+            }
+        }
+        
+        function stopper() {
+            if(started){
+        
+                console.log("hover");
+                audioCtx = new(window.AudioContext || window.webkitAudioContext)();
+    
+                var frequency = 1000;
+                var waveType = 'sine';// 'square'
+                var volume = 1;
+      
+                var duration = 500;
+                var oscillator = audioCtx.createOscillator();
+                var gainNode = audioCtx.createGain();
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(audioCtx.destination);
+                
+                gainNode.gain.value = volume;
+                oscillator.frequency.value = frequency;
+                oscillator.type = waveType;
+                
+                oscillator.start();
+                
+                setTimeout(
+                  function() {
+                    oscillator.stop();
+                  },
+                  duration
+                );
+            }
+        }
+        
+        
+        function showButtons(event){
+            var buttons = document.getElementsByClassName("row");
+    
+            for(var i = 0; i < buttons.length; i++) {
+              (function(index) {
+                buttons[index].style.borderColor = "blue";
+              })(i);
+            }
+            
+            //make the button that is clicked red
+            this.firstElementChild.style.backgroundColor = "red";
+            
+            //find number
+            var d = new Date();
+            var diff = d.getTime() - startTime;
+            document.getElementById("timeTaken").innerHTML = diff / 1000;
+        }
+        
+        function loadRandomNumber(){
+            var randomNo = Math.random() * (7 - 1) + 1;    
+            document.getElementById("randomNumber").innerHTML = Math.ceil(randomNo);
+        }
+    </script>
+    <style>
+    * {
+      box-sizing: border-box;
+    }
+    
+    /* Create two equal columns that floats next to each other */
+    .column {
+      float: left;
+      width: 100%;
+      height:125px;
+      font-size:40px;
+    }
+    
+    /* Clear floats after the columns */
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    /* Style the buttons */
+    .btn {
+      border: none;
+      outline: none;
+      padding: 12px 16px;
+      background-color: #f1f1f1;
+      cursor: pointer;
+    }
+    
+    .btn:hover {
+      background-color: #ddd;
+    }
+    
+    .btn.active {
+      background-color: #666;
+      color: white;
+    }
+    
+    .row{
+        border-style: solid;
+        border-color: white;
+    }
+    
+    .row > div > p{
+        color: white;
+    }
+    
+    
+    .stopper{
+        width:100%;
+        height:20px;
+        background-color:#000;
+    }
+    
+    .stopper:hover {
+        background-color: #4CAF50;
+    } /* Green */
+</style>
+</head>
+
+<body onload="loadRandomNumber()">
+    
+    
+
+
+    <p>Find button number <span id="randomNumber"></span>.
+    <button type="button" id="start">Start!</button> </p>
+     <span id="timeTaken"></span>
+
+    
+    <div class="stopper">
+    </div>
+    <div class="row">
+      <div class="column" style="background-color:#fff;">
+        <p>Button 1</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="column" style="background-color:#fff;">
+        <p>Button 2</p>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="column" style="background-color:#fff;">
+        <p>Button 3</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="column" style="background-color:#fff;">
+        <p>Button 4</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="column" style="background-color:#fff;">
+        <p>Button 5</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="column" style="background-color:#fff;">
+        <p>Button 6</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="column" style="background-color:#fff;">
+        <p>Button 7</p>
+      </div>
+    </div>
+    <div class="stopper" style="background-color:#fff;">
+    </div>
+    
+    
+<script type="text/javascript">
+    document.getElementById("start").addEventListener("click", beep);
+    var buttons = document.getElementsByClassName("row")
+    
+    for(var i = 0; i < buttons.length; i++) {
+      (function(index) {
+        buttons[index].addEventListener("mouseenter", hover)
+        buttons[index].addEventListener("click", showButtons)
+      })(i);
+    }
+    
+    buttons = document.getElementsByClassName("stopper");
+    
+    for(var i = 0; i < buttons.length; i++) {
+      (function(index) {
+        buttons[index].addEventListener("mouseover", stopper)
+      })(i);
+    }
+</script>
+</body>
+</html>

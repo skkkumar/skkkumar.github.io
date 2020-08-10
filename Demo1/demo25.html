@@ -1,0 +1,181 @@
+<html>
+<head>
+    <script type="text/javascript">
+        var globalOscillator;
+        var currentLevel = 0;
+        
+        var started = false;
+        var startTime;
+        var audioCtx;
+        var waveType = 'square';// 'square';// 'sine'
+        var volume = 1;
+        var duration = 200;
+        var frequency = 345;
+        var frequencies = [345, 313, 285, 259, 235, 214, 194, 177, 161, 146, 133, 121, 110, 100, 100];
+        var stepSize = 7;
+        //make stepsize code - 15
+        
+        function beep() {
+            if(!started){
+                audioCtx = new(window.AudioContext || window.webkitAudioContext)();
+
+                globalOscillator = audioCtx.createOscillator();
+                var gainNode = audioCtx.createGain();
+                
+                globalOscillator.connect(gainNode);
+                gainNode.connect(audioCtx.destination);
+                
+                gainNode.gain.value = volume;
+                globalOscillator.frequency.value = frequency;
+                globalOscillator.type = waveType;
+                
+                globalOscillator.start();
+                
+                setTimeout(
+                  function() {
+                    globalOscillator.stop();
+                  },
+                  duration
+                );
+                
+                started = true;
+                //change text to stop
+                //document.getElementById("start").innerHTML = 'Stop';
+                document.getElementById("start").disabled = true;
+            }
+            else{
+                globalOscillator.stop();
+            }
+            
+            var d = new Date();
+            startTime = d.getTime();
+        }
+            
+            
+            
+       
+        
+        function changeSlider(e){
+            if(started){
+
+                globalOscillator.stop();
+                //globalOscillator.disconnect(audioCtx.destination);
+                    
+                //add wheel movement  
+                var x = currentLevel + e.deltaY/4;
+    
+                if (x < 0)
+                    x = 0;
+                else if(x > 100)
+                    x = 100;
+                currentLevel = x;
+                var input = document.getElementById("gradient");
+                input.value = currentLevel;
+                
+                console.log("delta" + e.deltaY + " - " + x);
+                
+                //make stepsize code
+                var level = Math.round(x/stepSize);
+
+                //var frequency = 200; //frequencies[level];
+                var frequency = frequencies[level];
+                
+                console.log("position" + x + "->" + frequency);
+      
+
+                globalOscillator = audioCtx.createOscillator();
+                var gainNode = audioCtx.createGain();
+                
+                globalOscillator.connect(gainNode);
+                gainNode.connect(audioCtx.destination);
+                
+                gainNode.gain.value = volume;
+                globalOscillator.frequency.value = frequency;
+                globalOscillator.type = waveType;
+                
+                globalOscillator.start();
+                
+            }
+            
+        }
+        
+        
+        function findTime(){
+            globalOscillator.stop();
+            var d = new Date();
+            var diff = d.getTime() - startTime;
+            document.getElementById("timeTaken").innerHTML = diff / 1000;
+            
+        }
+        
+    </script>
+    <style>
+        .slider {
+        -webkit-appearance: slider-vertical;
+      width: 25px;
+      height: 600px;
+      background: #d3d3d3;
+      outline: none;
+      opacity: 0.7;
+      -webkit-transition: .2s;
+      transition: opacity .2s;
+      margin-left:50px;
+    }
+    
+    .slider:hover {
+      opacity: 1;
+    }
+    
+    .slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 25px;
+      height: 25px;
+      background: #4CAF50;
+      cursor: pointer;
+    }
+    
+    .slider::-moz-range-thumb {
+      width: 25px;
+      height: 25px;
+      background: #4CAF50;
+      cursor: pointer;
+    }
+    
+    
+        
+    </style>
+</head>
+
+<body id="body">
+    
+    
+    <h2>Gradient</h2>
+
+    <p>Press start button. 
+    Press the "sound" button to hear one sound. 
+    Scroll your mouse to hear different sound vibrations. 
+    Count the vibrations.</p>
+    
+    
+    <button type="button" id="start">Start!</button> <button type="button" id="stop">Count</button>
+    <span id="timeTaken"></span>
+    
+    <br/>
+   
+
+    <input type="range" min="1" max="100" value="1" class="slider" id="gradient">
+    
+
+<script type="text/javascript">
+    document.getElementById("start").addEventListener("click", beep);
+    document.getElementById("stop").addEventListener("click", findTime);
+
+    // onchange="changeSlider(this.value)"
+    document.getElementById("body").addEventListener("wheel", changeSlider);
+    //document.getElementById("body").addEventListener("click", findTime);
+    //onmousemove
+    //document.getElementById("gradient").addEventListener("mousemove", trackMouse);
+</script>
+</body>
+</html>

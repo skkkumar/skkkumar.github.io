@@ -1,0 +1,259 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+/* The navigation menu */
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+}
+
+/* Navigation links */
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* The subnavigation menu */
+.subnav {
+  float: left;
+  overflow: hidden;
+}
+
+/* Subnav button */
+.subnav .subnavbtn {
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+/* Add a red background color to navigation links on hover */
+.navbar a:hover, .subnav:hover .subnavbtn {
+  background-color: red;
+}
+
+/* Style the subnav content - positioned absolute */
+.subnav-content {
+  display: none;
+  position: absolute;
+  left: 0;
+  background-color: red;
+  width: 100%;
+  z-index: 1;
+}
+
+/* Style the subnav links */
+.subnav-content a {
+  float: left;
+  color: white;
+  text-decoration: none;
+}
+
+/* Add a grey background color on hover */
+.subnav-content a:hover {
+  background-color: #eee;
+  color: black;
+}
+
+/* When you move the mouse over the subnav container, open the subnav content */
+.subnav:hover .subnav-content {
+  display: block;
+}
+
+.stop-scrolling {
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Style the active class (and buttons on mouse-over) */
+.active{
+  background-color: #4CAF50;
+  color: white;
+}
+
+</style>
+<script type="text/javascript">
+    //https://explorable.com/counterbalanced-measures-design
+    var conditions = [1, 2, 3, 4, 5];
+
+    function dumpData(){
+        //find out the time the user pressed
+        
+    }
+    
+    function stopScrolling(){
+        document.getElementById("body").classList.add('stop-scrolling');
+    }
+    
+    
+    
+    
+</script>
+</head>
+<body id="body" onload="stopScrolling()">
+<!-- The navigation menu -->
+<div class="navbar">
+  <a href="#demo31">Condition 1</a>
+  <a href="#demo32">Condition 2</a>
+  <a href="#demo33">Condition 3</a>
+  <a href="#demo34">Condition 4</a>
+  <a href="#demo35">Condition 5</a>
+  <a href="#demo36">Condition 6</a>
+  <a href="#demo37">Condition 7</a>
+  <a href="#demo38">Condition 8</a>
+  <a href="#demo39">Condition 9</a>
+</div>
+<p>
+Click on first condition. After completing it go to the next one.
+</p>
+
+<iframe src="demo3.html" title="demo3" style="height:1000px;width:1200px;">
+</iframe>
+
+<a name="demo31"></a>
+<div class="navbar">
+  <a href="#demo31" class="active">Condition 1</a>
+  <a href="#demo32">Condition 2</a>
+  <a href="#demo33">Condition 3</a>
+  <a href="#demo34">Condition 4</a>
+  <a href="#demo35">Condition 5</a>
+  <a href="#demo36">Condition 6</a>
+  <a href="#demo37">Condition 7</a>
+  <a href="#demo38">Condition 8</a>
+  <a href="#demo39">Condition 9</a>
+</div>
+<iframe src="demo31.html" title="demo31" style="height:1000px;width:1200px;">
+    </iframe>
+
+<a name="demo32"></a>
+<div class="navbar">
+  <a href="#demo31">Condition 1</a>
+  <a href="#demo32" class="active">Condition 2</a>
+  <a href="#demo33">Condition 3</a>
+  <a href="#demo34">Condition 4</a>
+  <a href="#demo35">Condition 5</a>
+  <a href="#demo36">Condition 6</a>
+  <a href="#demo37">Condition 7</a>
+  <a href="#demo38">Condition 8</a>
+  <a href="#demo39">Condition 9</a>
+</div>
+<iframe src="demo32.html" title="demo35" style="height:1000px;width:1200px;">
+</iframe>
+<a name="demo33"></a>
+<div class="navbar">
+  <a href="#demo31">Condition 1</a>
+  <a href="#demo32">Condition 2</a>
+  <a href="#demo33" class="active">Condition 3</a>
+  <a href="#demo34">Condition 4</a>
+  <a href="#demo35">Condition 5</a>
+  <a href="#demo36">Condition 6</a>
+  <a href="#demo37">Condition 7</a>
+  <a href="#demo38">Condition 8</a>
+  <a href="#demo39">Condition 9</a>
+</div>
+<iframe src="demo33.html" title="demo32" style="height:1000px;width:1200px;">
+</iframe>
+<a name="demo34"></a>
+<div class="navbar">
+  <a href="#demo31">Condition 1</a>
+  <a href="#demo32">Condition 2</a>
+  <a href="#demo33">Condition 3</a>
+  <a href="#demo34" class="active">Condition 4</a>
+  <a href="#demo35">Condition 5</a>
+  <a href="#demo36">Condition 6</a>
+  <a href="#demo37">Condition 7</a>
+  <a href="#demo38">Condition 8</a>
+  <a href="#demo39">Condition 9</a>
+</div>
+<iframe src="demo35.html" title="demo34" style="height:1000px;width:1200px;">
+</iframe>
+
+<a name="demo35"></a>
+<div class="navbar">
+  <a href="#demo31">Condition 1</a>
+  <a href="#demo32">Condition 2</a>
+  <a href="#demo33">Condition 3</a>
+  <a href="#demo34">Condition 4</a>
+  <a href="#demo35" class="active">Condition 5</a>
+  <a href="#demo36">Condition 6</a>
+  <a href="#demo37">Condition 7</a>
+  <a href="#demo38">Condition 8</a>
+  <a href="#demo39">Condition 9</a>
+</div>
+<iframe src="demo34.html" title="demo33" style="height:1000px;width:1200px;">
+</iframe>
+
+<a name="demo36"></a>
+<div class="navbar">
+  <a href="#demo31">Condition 1</a>
+  <a href="#demo32">Condition 2</a>
+  <a href="#demo33">Condition 3</a>
+  <a href="#demo34">Condition 4</a>
+  <a href="#demo35">Condition 5</a>
+  <a href="#demo36" class="active">Condition 6</a>
+  <a href="#demo37">Condition 7</a>
+  <a href="#demo38">Condition 8</a>
+  <a href="#demo39">Condition 9</a>
+</div>
+<iframe src="demo36.html" title="demo33" style="height:1000px;width:1200px;">
+</iframe>
+
+<a name="demo37"></a>
+<div class="navbar">
+  <a href="#demo31">Condition 1</a>
+  <a href="#demo32">Condition 2</a>
+  <a href="#demo33">Condition 3</a>
+  <a href="#demo34">Condition 4</a>
+  <a href="#demo35">Condition 5</a>
+  <a href="#demo36">Condition 6</a>
+  <a href="#demo37" class="active">Condition 7</a>
+  <a href="#demo38">Condition 8</a>
+  <a href="#demo39">Condition 9</a>
+</div>
+<iframe src="demo39.html" title="demo33" style="height:1000px;width:1200px;">
+</iframe>
+
+<a name="demo38"></a>
+<div class="navbar">
+  <a href="#demo31">Condition 1</a>
+  <a href="#demo32">Condition 2</a>
+  <a href="#demo33">Condition 3</a>
+  <a href="#demo34">Condition 4</a>
+  <a href="#demo35">Condition 5</a>
+  <a href="#demo36">Condition 6</a>
+  <a href="#demo37">Condition 7</a>
+  <a href="#demo38" class="active">Condition 8</a>
+  <a href="#demo39">Condition 9</a>
+</div>
+<iframe src="demo38.html" title="demo33" style="height:1000px;width:1200px;">
+</iframe>
+
+<a name="demo39"></a>
+<div class="navbar">
+  <a href="#demo31">Condition 1</a>
+  <a href="#demo32">Condition 2</a>
+  <a href="#demo33">Condition 3</a>
+  <a href="#demo34">Condition 4</a>
+  <a href="#demo35">Condition 5</a>
+  <a href="#demo36">Condition 6</a>
+  <a href="#demo37">Condition 7</a>
+  <a href="#demo38">Condition 8</a>
+  <a href="#demo39" class="active">Condition 9</a>
+</div>
+<iframe src="demo37.html" title="demo33" style="height:1000px;width:1200px;">
+</iframe>
+<!--
+<button onclick="dumpData()">
+</button>
+-->
+</body>
+</html>
